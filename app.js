@@ -1,4 +1,14 @@
+
+    $('input[name=\'measure_units\']').on('change', function() {
+        $('.measure').hide();
+
+        $('#measure-' + this.value).show();
+    });
+
+    $('input[name=\'measure_units\']:checked').trigger('change');
+
 $(document).ready(function() {
+
     $("#add_row").on("click", function() {
         // Dynamic Rows Code
         
@@ -95,5 +105,4 @@ $(document).ready(function() {
         //    console.log("CALC AREA: "+area)
         // } 
     });
-
 });
