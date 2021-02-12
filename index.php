@@ -14,7 +14,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="form-group col-sm-10" style="display: inline-block;">
+            <div class="form-group col-sm-12" style="display: inline-block;">
                 <div class="radio">
                     <label><input type="radio" name="measure_units" value="metres" checked="checked" />
                         Metres</label>
@@ -30,8 +30,11 @@
                         Inches</label>
                 </div>
             </div>
+            <div class="form-group col-sm-12">
+                <p>Total: <strong id="totalArea"></strong></p>
+            </div>
         </div>
-        <div class="row clearfix">
+        <div class="row clearfix" id="tileCalc">
             <div class="measure col-md-12 table-responsive" id="measure-metres">
                 <table class="table table-bordered table-hover table-sortable" id="tab_logic">
                     <thead>
@@ -67,16 +70,12 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <p>Total: <strong id="totalArea"></strong></p>
-                        </tr>
-                    </tfoot>
                 </table>
+                <a id="add_row" class="btn btn-primary float-right">Add Row</a>
             </div>
 
             <div class="measure col-md-12 table-responsive" id="measure-feet_inches">
-                <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                <table class="table table-bordered table-hover table-sortable" id="tab_feet_inches">
                     <thead>
                         <tr>
                             <th class="text-center">
@@ -110,16 +109,12 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <p>Total: <strong id="totalArea"></strong></p>
-                        </tr>
-                    </tfoot>
                 </table>
+                <a id="add_feet_inch" class="btn btn-primary float-right">Add Row</a>
             </div>
 
             <div class="measure col-md-12 table-responsive" id="measure-inches">
-                <table class="table table-bordered table-hover" id="tab_logic">
+                <table class="table table-bordered table-hover" id="tab_inches">
                     <thead>
                         <tr>
                             <th class="text-center">
@@ -153,15 +148,10 @@
                             </td>
                         </tr>
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <p>Total: <strong id="totalArea"></strong></p>
-                        </tr>
-                    </tfoot>
                 </table>
+                <a id="add_inch_row" class="btn btn-primary float-right">Add Row</a>
             </div>
         </div>
-        <a id="add_row" class="btn btn-primary float-right">Add Row</a>
     </div>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <!-- Latest compiled and minified JavaScript -->
