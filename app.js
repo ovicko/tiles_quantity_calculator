@@ -1,5 +1,5 @@
 
-var surface_type = "Wall ";
+var surface_type = "Floor ";
 var inch_to_feet   = 0.0833;
 var feet_to_metres = 0.3048;
 var price_per_sqm = 12.85;
@@ -10,28 +10,27 @@ $(document).ready(function() {
     $('input[name=\'measure_units\']').on('change', function() {
 
         $('#tileCalc input').val('')
-
         $('.measure').hide();
         $('#measure-' + this.value).show();
+        $('#measure-' + this.value).find('.btn-primary').trigger('click');
+
     });
 
     $('input[name=\'measure_units\']:checked').trigger('change');
 
-    $("#add_row").on("click", function() {
-        addTabRow('#tab_logic')
-    });
-
-    $("#add_row").trigger("click");
-    
-    $('#add_inch_row').on("click", function() {
-        addTabRow('#tab_inches')
-    })
-
-    $('#add_feet_inch').on("click", function() {
-        addTabRow('#tab_feet_inches')
-    })
-
 });
+
+$(document).on("click",'#add_row', function() {
+    addTabRow('#tab_logic')
+})
+
+$(document).on("click",'#add_inch_row', function() {
+    addTabRow('#tab_inches')
+})
+
+$(document).on("click",'#add_feet_inch', function() {
+    addTabRow('#tab_feet_inches')
+})
 
 $(document).on("change","input",function(){
 
@@ -153,7 +152,7 @@ function addTabRow(tab) {
             });
 
             if ($(this).data("name") === 'label') {
-                td.html(" Wall "+newid);
+                td.html(surface_type + newid);
             }
             
             var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
@@ -174,4 +173,8 @@ function addTabRow(tab) {
     $(tr).find("td button.row-remove").on("click", function() {
             $(this).closest("tr").remove();
     });
+}
+
+function addFirstRow($button) {
+    $($button).trigger("click");
 }
