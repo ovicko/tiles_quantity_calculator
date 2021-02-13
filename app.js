@@ -57,25 +57,20 @@ $(document).on("change","input",function(){
     if (widthFeet) {
         var _width_metres = widthFeet*feet_to_metres
         width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
-        console.log("Width A "+width)
     }
 
     if (lengthFeet) {
         var _length_metres = lengthFeet*feet_to_metres
         length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-        console.log("Length A"+length)
     }
 
     // width and length in feet and inches
     var widthInches = $parent.find('input[name*="inchwidth"]').val()
     var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
-    if (widthInches) {
-        
+    if (widthInches) { 
         var _width_metres = widthInches*inch_to_feet*feet_to_metres
         width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
-
-        console.log("width A "+width)
     }
 
     if (lengthInches) {
@@ -95,7 +90,7 @@ $(document).on("change","input",function(){
         console.log("Width "+width)
     }
 
-        if (_inchLength) {
+    if (_inchLength) {
         var _length_metres = _inchLength*inch_to_feet*feet_to_metres
         length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
         console.log("Width "+length)
@@ -116,7 +111,7 @@ $(document).on("change","input",function(){
         totalArea += Number($(this).val());
     });
 
-    $("#totalArea").html(totalArea+" sq.m")
+    $("#totalArea").html(totalArea+" sq. m")
     var totalCost = 0;
     totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
     $("#totalCost").html("$ "+totalCost)
@@ -178,7 +173,10 @@ function addTabRow(tab) {
     $(tr).appendTo($(tab));
     
     $(tr).find("td button.row-remove").on("click", function() {
+            $(this).closest('tr').find("input").val(0);
+            $(this).closest('tr').find("input").trigger("change");
             $(this).closest("tr").remove();
+            
     });
 }
 
