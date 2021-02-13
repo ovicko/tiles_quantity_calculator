@@ -43,6 +43,8 @@
                     <thead>
                         <tr>
                             <th class="text-center">
+                            </th>
+                            <th class="text-center">
                                 Width
                             </th>
                             <th class="text-center">
@@ -56,6 +58,9 @@
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
+                            <td data-name="label">
+                                <label name='label0'></label>
+                            </td>
                             <td data-name="width">
                                 <input type="number" min="0" name='width0' placeholder='Width' class="width form-control" />
                             </td>
@@ -80,6 +85,8 @@
                 <table class="table table-bordered table-hover table-sortable" id="tab_feet_inches">
                     <thead>
                         <tr>
+                            <th class="text-center">
+                            </th>
                             <th class="text-center" colspan="2">
                                 Width
                             </th>
@@ -94,6 +101,9 @@
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
+                            <td data-name="label">
+                                Wall
+                            </td>
                             <td data-name="feetwid">
                                 <input type="number" min="0" name='width0' placeholder='Feet' class="width form-control" />
                             </td>
@@ -125,6 +135,8 @@
                     <thead>
                         <tr>
                             <th class="text-center">
+                            </th>
+                            <th class="text-center">
                                 Width
                             </th>
                             <th class="text-center">
@@ -138,6 +150,9 @@
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
+                            <td data-name="label">
+                                Wall
+                            </td>
                             <td data-name="widinch">
                                 <input type="number" min="0" name='winch0' placeholder='Inch' class="width form-control" />
                             </td>
