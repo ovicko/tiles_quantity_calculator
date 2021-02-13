@@ -28,7 +28,7 @@
                             <div class="radio">
                                 <label>
                                     <input type="radio" name="measure_units" value="feet_inches" />
-                                    Feets Inches</label>
+                                    Feet & Inches</label>
                             </div>
                             <div class="radio">
                                 <label>
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-12">
-                            <p>Total: <strong id="totalArea"></strong></p>
+                            <p>Total Area : <strong id="totalArea"></strong></p>
                             <p>Total Cost : <strong id="totalCost"></strong></p>
                             <p>Total Tiles : <strong id="totalTiles"></strong></p>
                         </div>
