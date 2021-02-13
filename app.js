@@ -1,8 +1,12 @@
-
+//customize the name to anything 
 var surface_type = "Floor ";
 var inch_to_feet   = 0.0833;
 var feet_to_metres = 0.3048;
+
+//custom price per sqm, change to what fits u
 var price_per_sqm = 12.85;
+
+//tile size in square metres
 var tile_size_sqm = 0.05;
 
 $(document).ready(function() {
