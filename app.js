@@ -72,11 +72,12 @@ $(document).ready(function() {
     $("#add_row").trigger("click");
 
     //area calc
- 
+    var inch_to_feet   = 0.0833;
+    var feet_to_metres = 0.3048;
+
     $(document).on("change","input",function(){
 
         var $parent = $(this).closest("tr")
-
         // console.log($parent);
         var length = $parent.find('input[name*="length"]').val()
         var width = $parent.find('input[name*="width"]').val()
@@ -84,9 +85,17 @@ $(document).ready(function() {
         var widthInches = $parent.find('input[name*="inchwidth"]').val()
         var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
-        if (widthInches && lengthInches) {
-            console.log("Width "+widthInches)
-            console.log("Length "+lengthInches)
+        if (widthInches) {
+            var _width_metres = widthInches*inch_to_feet*feet_to_metres
+            width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+
+            console.log("width "+width)
+        }
+
+        if (lengthInches) {
+            var _length_metres = lengthInches*inch_to_feet*feet_to_metres
+            length = parseFloat(length) +  (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+            console.log("length "+length)
         }
 
         var _Area = length * width
