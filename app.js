@@ -16,6 +16,12 @@ $(document).ready(function() {
     });
 
     $('input[name=\'measure_units\']:checked').trigger('change');
+
+    $("#add_row").on("click", function() {
+        addTabRow('#tab_logic')
+    });
+
+    $("#add_row").trigger("click");
     
     $('#add_inch_row').on("click", function() {
         addTabRow('#tab_inches')
@@ -25,98 +31,93 @@ $(document).ready(function() {
         addTabRow('#tab_feet_inches')
     })
 
-    $("#add_row").on("click", function() {
-        addTabRow('#tab_logic')
-    });
-
-    $("#add_row").trigger("click");
 });
 
 $(document).on("change","input",function(){
 
-var $parent = $(this).closest("tr")
-// console.log($parent);
-var length = 0
-var width = 0
+    var $parent = $(this).closest("tr")
+    // console.log($parent);
+    var length = 0
+    var width = 0
 
-//width  & length in metres
-length = $parent.find('input[name*="length"]').val()
-width = $parent.find('input[name*="width"]').val()
+    //width  & length in metres
+    length = $parent.find('input[name*="length"]').val()
+    width = $parent.find('input[name*="width"]').val()
 
-//width & length in feet
-var widthFeet = $parent.find('input[name*="feetwid"]').val()
-var lengthFeet = $parent.find('input[name*="feetleng"]').val()
+    //width & length in feet
+    var widthFeet = $parent.find('input[name*="feetwid"]').val()
+    var lengthFeet = $parent.find('input[name*="feetleng"]').val()
 
-if (widthFeet) {
-    var _width_metres = widthFeet*feet_to_metres
-    width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
-    console.log("Width A "+width)
-}
+    if (widthFeet) {
+        var _width_metres = widthFeet*feet_to_metres
+        width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+        console.log("Width A "+width)
+    }
 
-if (lengthFeet) {
-    var _length_metres = lengthFeet*feet_to_metres
-    length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-    console.log("Length A"+length)
-}
+    if (lengthFeet) {
+        var _length_metres = lengthFeet*feet_to_metres
+        length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+        console.log("Length A"+length)
+    }
 
-// width and length in feet and inches
-var widthInches = $parent.find('input[name*="inchwidth"]').val()
-var lengthInches = $parent.find('input[name*="inchlength"]').val()
+    // width and length in feet and inches
+    var widthInches = $parent.find('input[name*="inchwidth"]').val()
+    var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
-if (widthInches) {
-    
-    var _width_metres = widthInches*inch_to_feet*feet_to_metres
-    width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+    if (widthInches) {
+        
+        var _width_metres = widthInches*inch_to_feet*feet_to_metres
+        width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
 
-    console.log("width A "+width)
-}
+        console.log("width A "+width)
+    }
 
-if (lengthInches) {
-    var _length_metres = lengthInches*inch_to_feet*feet_to_metres
-    length = parseFloat(length) +  (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-    console.log("length "+length)
-}
+    if (lengthInches) {
+        var _length_metres = lengthInches*inch_to_feet*feet_to_metres
+        length = parseFloat(length) +  (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+        console.log("length "+length)
+    }
 
-//width and length in inch only
+    //width and length in inch only
 
-var _inchWidth = $parent.find('input[name*="widinch"]').val()
-var _inchLength = $parent.find('input[name*="leninch"]').val()
+    var _inchWidth = $parent.find('input[name*="widinch"]').val()
+    var _inchLength = $parent.find('input[name*="leninch"]').val()
 
-if (_inchWidth) {
-    var _width_metres = _inchWidth*inch_to_feet*feet_to_metres
-    width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
-    console.log("Width "+width)
-}
+    if (_inchWidth) {
+        var _width_metres = _inchWidth*inch_to_feet*feet_to_metres
+        width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+        console.log("Width "+width)
+    }
 
-    if (_inchLength) {
-    var _length_metres = _inchLength*inch_to_feet*feet_to_metres
-    length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-    console.log("Width "+length)
-}
+        if (_inchLength) {
+        var _length_metres = _inchLength*inch_to_feet*feet_to_metres
+        length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+        console.log("Width "+length)
+    }
 
 
-var _Area =  Math.round(((length * width) + Number.EPSILON) * 100) / 100
+    var _Area =  Math.round(((length * width) + Number.EPSILON) * 100) / 100
 
-$parent.find('input[name*="area"]').val(_Area); 
+    $parent.find('input[name*="area"]').val(_Area); 
 
-var totalArea = 0;
+    var totalArea = 0;
 
-var $tbody = $(this).closest("tbody")
+    var $tbody = $(this).closest("tbody")
 
-$tbody.find('input[name*="area"]').each(function() {
+    $tbody.find('input[name*="area"]').each(function() {
 
-    console.log($(this).val())
-    totalArea += Number($(this).val());
-});
+        console.log($(this).val())
+        totalArea += Number($(this).val());
+    });
 
-$("#totalArea").html(totalArea+" sq.m")
-var totalCost = 0;
-totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
-$("#totalCost").html("$ "+totalCost)
+    $("#totalArea").html(totalArea+" sq.m")
+    var totalCost = 0;
+    totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
+    $("#totalCost").html("$ "+totalCost)
 
-var totalTiles = 0;
-totalTiles =  Number(Math.round(((totalArea / tile_size_sqm) + Number.EPSILON) * 100) / 10 )
-$("#totalTiles").html(totalTiles+" pcs")
+    var totalTiles = 0;
+    totalTiles =  Number(Math.round(((totalArea / tile_size_sqm) + Number.EPSILON) * 100) / 10 )
+    $("#totalTiles").html(totalTiles+" pcs")
 });
 
 function addTabRow(tab) {
