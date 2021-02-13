@@ -135,11 +135,11 @@
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
-                            <td data-name="width">
-                                <input type="number" min="0" name='width0' placeholder='Width' class="width form-control" />
+                            <td data-name="widinch">
+                                <input type="number" min="0" name='winch0' placeholder='Inch' class="width form-control" />
                             </td>
-                            <td data-name="length">
-                                <input type="number" min="0" name='length0' placeholder='Length' class="length form-control" />
+                            <td data-name="leninch">
+                                <input type="number" min="0" name='linch0' placeholder='Inch' class="length form-control" />
                             </td>
 
                             <td data-name="area">

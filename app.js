@@ -79,17 +79,20 @@ $(document).ready(function() {
 
         var $parent = $(this).closest("tr")
         // console.log($parent);
-        var length = $parent.find('input[name*="length"]').val()
-        var width = $parent.find('input[name*="width"]').val()
-        
+        var length = 0
+        var width = 0
+        length = $parent.find('input[name*="length"]').val()
+        width = $parent.find('input[name*="width"]').val()
+        console.log("width B "+width)
         var widthInches = $parent.find('input[name*="inchwidth"]').val()
         var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
         if (widthInches) {
+            
             var _width_metres = widthInches*inch_to_feet*feet_to_metres
             width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
 
-            console.log("width "+width)
+            console.log("width A "+width)
         }
 
         if (lengthInches) {
@@ -98,7 +101,25 @@ $(document).ready(function() {
             console.log("length "+length)
         }
 
-        var _Area = length * width
+        //inch only
+
+        var _inchWidth = $parent.find('input[name*="widinch"]').val()
+        var _inchLength = $parent.find('input[name*="leninch"]').val()
+
+        if (_inchWidth) {
+            var _width_metres = _inchWidth*inch_to_feet*feet_to_metres
+            width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+            console.log("Width "+width)
+        }
+
+         if (_inchLength) {
+            var _length_metres = _inchLength*inch_to_feet*feet_to_metres
+            length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+            console.log("Width "+length)
+        }
+
+
+        var _Area =  Math.round(((length * width) + Number.EPSILON) * 100) / 100
 
         $parent.find('input[name*="area"]').val(_Area); 
         
