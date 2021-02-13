@@ -1,10 +1,8 @@
 $(document).ready(function() {
     
     $('input[name=\'measure_units\']').on('change', function() {
-        // console.log($('.measure tbody'));
 
         $('#tileCalc input').val('')
-
 
         $('.measure').hide();
         $('#measure-' + this.value).show();
@@ -75,6 +73,7 @@ $(document).ready(function() {
     var inch_to_feet   = 0.0833;
     var feet_to_metres = 0.3048;
     var price_per_sqm = 12.85;
+    var tile_size_sqm = 0.05;
 
     $(document).on("change","input",function(){
 
@@ -157,6 +156,10 @@ $(document).ready(function() {
         var totalCost = 0;
         totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
         $("#totalCost").html("$ "+totalCost)
+
+        var totalTiles = 0;
+        totalTiles =  Number(Math.round(((totalArea / tile_size_sqm) + Number.EPSILON) * 100) / 10 )
+        $("#totalTiles").html(totalTiles+" pcs")
     });
 });
 

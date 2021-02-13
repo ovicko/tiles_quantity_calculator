@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
+
 <body>
 
     <div class="container">
@@ -33,6 +34,7 @@
             <div class="form-group col-sm-12">
                 <p>Total: <strong id="totalArea"></strong></p>
                 <p>Total Cost : <strong id="totalCost"></strong></p>
+                <p>Total Tiles : <strong id="totalTiles"></strong></p>
             </div>
         </div>
         <div class="row clearfix" id="tileCalc">
