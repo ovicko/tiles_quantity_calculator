@@ -32,6 +32,7 @@
             </div>
             <div class="form-group col-sm-12">
                 <p>Total: <strong id="totalArea"></strong></p>
+                <p>Total Cost : <strong id="totalCost"></strong></p>
             </div>
         </div>
         <div class="row clearfix" id="tileCalc">
@@ -91,13 +92,13 @@
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
-                            <td data-name="feetwidth">
+                            <td data-name="feetwid">
                                 <input type="number" min="0" name='width0' placeholder='Feet' class="width form-control" />
                             </td>
                             <td data-name="inchwidth">
                                 <input type="number" min="0" name='winch0' placeholder='Inch' class="width form-control" />
                             </td>
-                            <td data-name="feetlength">
+                            <td data-name="feetleng">
                                 <input type="number" min="0" name='length0' placeholder='Feet' class="length form-control" />
                             </td>
                             <td data-name="inchlength">

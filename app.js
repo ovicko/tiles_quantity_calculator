@@ -74,6 +74,7 @@ $(document).ready(function() {
     //area calc
     var inch_to_feet   = 0.0833;
     var feet_to_metres = 0.3048;
+    var price_per_sqm = 12.85;
 
     $(document).on("change","input",function(){
 
@@ -81,9 +82,28 @@ $(document).ready(function() {
         // console.log($parent);
         var length = 0
         var width = 0
+
+        //width  & length in metres
         length = $parent.find('input[name*="length"]').val()
         width = $parent.find('input[name*="width"]').val()
-        console.log("width B "+width)
+
+        //width & length in feet
+        var widthFeet = $parent.find('input[name*="feetwid"]').val()
+        var lengthFeet = $parent.find('input[name*="feetleng"]').val()
+
+        if (widthFeet) {
+            var _width_metres = widthFeet*feet_to_metres
+            width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+            console.log("Width A "+width)
+        }
+
+        if (lengthFeet) {
+            var _length_metres = lengthFeet*feet_to_metres
+            length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+            console.log("Length A"+length)
+        }
+
+        // width and length in feet and inches
         var widthInches = $parent.find('input[name*="inchwidth"]').val()
         var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
@@ -101,7 +121,7 @@ $(document).ready(function() {
             console.log("length "+length)
         }
 
-        //inch only
+        //width and length in inch only
 
         var _inchWidth = $parent.find('input[name*="widinch"]').val()
         var _inchLength = $parent.find('input[name*="leninch"]').val()
@@ -134,6 +154,9 @@ $(document).ready(function() {
         });
 
         $("#totalArea").html(totalArea+" sq.m")
+        var totalCost = 0;
+        totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
+        $("#totalCost").html("$ "+totalCost)
     });
 });
 
