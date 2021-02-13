@@ -6,14 +6,14 @@
 
 <head>
     <title>Tile Calculator</title>
-    <link href="stylesheet.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="stylesheet.css" rel="stylesheet" type="text/css">
 </head>
 
 
 <body>
     <div class="container">
-        <div class="col-sm-6 col-sm-offset-2">
+        <div class="col-sm-8 col-sm-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Calculate Tiles Quantity</h3>
@@ -67,10 +67,10 @@
                                             <label name='label0'></label>
                                         </td>
                                         <td data-name="width">
-                                            <input type="number" min="0" name='width0' placeholder='Width' class="width form-control" />
+                                            <input type="number" min="0" name='width0' placeholder='Metres' class="width form-control" />
                                         </td>
                                         <td data-name="length">
-                                            <input type="number" min="0" name='length0' placeholder='Length' class="length form-control" />
+                                            <input type="number" min="0" name='length0' placeholder='Metres' class="length form-control" />
                                         </td>
 
                                         <td data-name="area">
@@ -175,7 +175,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <a id="add_inch_row" class="btn btn-primary float-right">Add Row</a>
+                            <a id="add_inch_row" class="btn btn-primary float-right"></a>
                         </div>
                     </div>
                 </div>
