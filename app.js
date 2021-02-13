@@ -11,6 +11,8 @@ $(document).ready(function() {
 
         $('#tileCalc input').val('')
         $('.measure').hide();
+        //clear all except first
+        $('#measure-' + this.value).find('tbody').children().not(':first').remove();;
         $('#measure-' + this.value).show();
         $('#measure-' + this.value).find('.btn-primary').trigger('click');
 
