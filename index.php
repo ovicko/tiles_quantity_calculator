@@ -48,8 +48,7 @@
                             <th class="text-center">
                                 Area
                             </th>
-                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-                            </th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,26 +77,31 @@
                 <table class="table table-bordered table-hover table-sortable" id="tab_feet_inches">
                     <thead>
                         <tr>
-                            <th class="text-center">
+                            <th class="text-center" colspan="2">
                                 Width
                             </th>
-                            <th class="text-center">
+                            <th class="text-center" colspan="2">
                                 Length
                             </th>
                             <th class="text-center">
                                 Area
                             </th>
-                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-                            </th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr id='addr0' data-id="0" class="hidden">
-                            <td data-name="width">
-                                <input type="number" min="0" name='width0' placeholder='Width' class="width form-control" />
+                            <td data-name="feetwidth">
+                                <input type="number" min="0" name='width0' placeholder='Feet' class="width form-control" />
                             </td>
-                            <td data-name="length">
-                                <input type="number" min="0" name='length0' placeholder='Length' class="length form-control" />
+                            <td data-name="inchwidth">
+                                <input type="number" min="0" name='winch0' placeholder='Inch' class="width form-control" />
+                            </td>
+                            <td data-name="feetlength">
+                                <input type="number" min="0" name='length0' placeholder='Feet' class="length form-control" />
+                            </td>
+                            <td data-name="inchlength">
+                                <input type="number" min="0" name='linch0' placeholder='Inch' class="length form-control" />
                             </td>
 
                             <td data-name="area">
@@ -126,8 +130,7 @@
                             <th class="text-center">
                                 Area
                             </th>
-                            <th class="text-center" style="border-top: 1px solid #ffffff; border-right: 1px solid #ffffff;">
-                            </th>
+                            <th class="text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>

@@ -80,6 +80,14 @@ $(document).ready(function() {
         // console.log($parent);
         var length = $parent.find('input[name*="length"]').val()
         var width = $parent.find('input[name*="width"]').val()
+        
+        var widthInches = $parent.find('input[name*="inchwidth"]').val()
+        var lengthInches = $parent.find('input[name*="inchlength"]').val()
+
+        if (widthInches && lengthInches) {
+            console.log("Width "+widthInches)
+            console.log("Length "+lengthInches)
+        }
 
         var _Area = length * width
 
