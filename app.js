@@ -1,5 +1,5 @@
 //customize the name to anything 
-var surface_type = "Floor ";
+var surface_type = "Surface ";
 var inch_to_feet   = 0.0833;
 var feet_to_metres = 0.3048;
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
 });
 
 $(document).on("click",'#add_row', function() {
-    addTabRow('#tab_logic')
+    addTabRow('#tab_metres')
 })
 
 $(document).on("click",'#add_inch_row', function() {
@@ -175,8 +175,7 @@ function addTabRow(tab) {
     $(tr).find("td button.row-remove").on("click", function() {
             $(this).closest('tr').find("input").val(0);
             $(this).closest('tr').find("input").trigger("change");
-            $(this).closest("tr").remove();
-            
+            $(this).closest("tr").remove();   
     });
 }
 

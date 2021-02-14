@@ -44,7 +44,7 @@
                     </div>
                     <div class="row clearfix" id="tileCalc">
                         <div class="measure col-md-12 table-responsive" id="measure-metres">
-                            <table class="table table-bordered table-hover table-sortable" id="tab_logic">
+                            <table class="table table-bordered table-hover table-sortable" id="tab_metres">
                                 <thead>
                                     <tr>
                                         <th class="text-center">
