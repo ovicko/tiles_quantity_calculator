@@ -42,7 +42,6 @@ $(document).on("click",'#add_feet_inch', function() {
 $(document).on("change","input",function(){
 
     var $parent = $(this).closest("tr")
-    // console.log($parent);
     var length = 0
     var width = 0
 
@@ -80,22 +79,18 @@ $(document).on("change","input",function(){
     }
 
     //width and length in inch only
-
     var _inchWidth = $parent.find('input[name*="widinch"]').val()
     var _inchLength = $parent.find('input[name*="leninch"]').val()
 
     if (_inchWidth) {
         var _width_metres = _inchWidth*inch_to_feet*feet_to_metres
         width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
-        console.log("Width "+width)
     }
 
     if (_inchLength) {
         var _length_metres = _inchLength*inch_to_feet*feet_to_metres
         length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-        console.log("Width "+length)
     }
-
 
     var _Area =  Math.round(((length * width) + Number.EPSILON) * 100) / 100
 
@@ -106,12 +101,11 @@ $(document).on("change","input",function(){
     var $tbody = $(this).closest("tbody")
 
     $tbody.find('input[name*="area"]').each(function() {
-
-        console.log($(this).val())
         totalArea += Number($(this).val());
     });
 
     $("#totalArea").html(totalArea+" sq. m")
+
     var totalCost = 0;
     totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
     $("#totalCost").html("$ "+totalCost)
@@ -122,10 +116,8 @@ $(document).on("change","input",function(){
 });
 
 function addTabRow(tab) {
-            // Get max row id and set new id
+    // Get max row id and set new id
     var newid = 0;
-
-    // console.log($(tab+' tr'))
 
     $.each($(tab+' tr'), function() {
 
@@ -167,9 +159,7 @@ function addTabRow(tab) {
             }).appendTo($(tr));
         }
     });
-    
-    // add the new row
-    // console.log(element)
+
     $(tr).appendTo($(tab));
     
     $(tr).find("td button.row-remove").on("click", function() {
@@ -177,8 +167,4 @@ function addTabRow(tab) {
             $(this).closest('tr').find("input").trigger("change");
             $(this).closest("tr").remove();   
     });
-}
-
-function addFirstRow($button) {
-    $($button).trigger("click");
 }
