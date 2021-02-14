@@ -135,23 +135,23 @@ function addTabRow(tab) {
     // loop through each td and create new elements with name of newid
     $.each($(tab+" tbody tr:nth(0) td"), function() {
         var td;
-        var cur_td = $(this);
+        var current_td = $(this);
         
-        var children = cur_td.children();
+        var children = current_td.children();
         
         // add new td and element if it has a nane
         if ($(this).data("name") !== undefined) {
             td = $("<td></td>", {
-                "data-name": $(cur_td).data("name")
+                "data-name": $(current_td).data("name")
             });
 
             if ($(this).data("name") === 'label') {
                 td.html(surface_type + newid);
             }
             
-            var c = $(cur_td).find($(children[0]).prop('tagName')).clone().val("");
-            c.attr("name", $(cur_td).data("name") + newid);
-            c.appendTo($(td));
+            var _td_child = $(current_td).find($(children[0]).prop('tagName')).clone().val("");
+            _td_child.attr("name", $(current_td).data("name") + newid);
+            _td_child.appendTo($(td));
             td.appendTo($(tr));
         } else {
             td = $("<td></td>", {
