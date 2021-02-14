@@ -1,13 +1,13 @@
 //customize the name to anything 
-var surface_type = "Surface ";
-var inch_to_feet   = 0.0833;
-var feet_to_metres = 0.3048;
+var surfaceType = "Surface ";
+var inchToFeet   = 0.0833;
+var feetToMetres = 0.3048;
 
 //custom price per sqm, change to what fits u
-var price_per_sqm = 12.85;
+var pricePerSqMetre = 12.85;
 
 //tile size in square metres
-var tile_size_sqm = 0.05;
+var tileSizeInSqMetre = 0.05;
 
 $(document).ready(function() {
     
@@ -16,7 +16,7 @@ $(document).ready(function() {
         $('#tileCalc input').val('')
         $('.measure').hide();
         //clear all except first
-        $('#measure-' + this.value).find('.btn-primary').html('Add '+surface_type);
+        $('#measure-' + this.value).find('.btn-primary').html('Add '+surfaceType);
         $('#measure-' + this.value).find('tbody').children().not(':first').remove();;
         $('#measure-' + this.value).show();
         $('#measure-' + this.value).find('.btn-primary').trigger('click');
@@ -54,11 +54,11 @@ $(document).on("change","input",function(){
     var lengthFeet = $parent.find('input[name*="feetleng"]').val()
 
     if (widthFeet) {
-       width = convertTo2DP(widthFeet*feet_to_metres)
+       width = convertTo2DP(widthFeet*feetToMetres)
     }
 
     if (lengthFeet) {
-        length = convertTo2DP(lengthFeet*feet_to_metres)
+        length = convertTo2DP(lengthFeet*feetToMetres)
     }
 
     // width and length in feet and inches
@@ -66,11 +66,11 @@ $(document).on("change","input",function(){
     var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
     if (widthInches) { 
-        width = parseFloat(width) + convertTo2DP(widthInches*inch_to_feet*feet_to_metres)
+        width = parseFloat(width) + convertTo2DP(widthInches*inchToFeet*feetToMetres)
     }
 
     if (lengthInches) {
-        length = parseFloat(length) + convertTo2DP(lengthInches*inch_to_feet*feet_to_metres)
+        length = parseFloat(length) + convertTo2DP(lengthInches*inchToFeet*feetToMetres)
     }
 
     //width and length in inch only
@@ -78,11 +78,11 @@ $(document).on("change","input",function(){
     var _inchLength = $parent.find('input[name*="leninch"]').val()
 
     if (_inchWidth) {
-        width = convertTo2DP(_inchWidth*inch_to_feet*feet_to_metres)
+        width = convertTo2DP(_inchWidth*inchToFeet*feetToMetres)
     }
 
     if (_inchLength) {
-        length = convertTo2DP(_inchLength*inch_to_feet*feet_to_metres)
+        length = convertTo2DP(_inchLength*inchToFeet*feetToMetres)
     }
 
     var _Area =  convertTo2DP(length * width)
@@ -100,11 +100,11 @@ $(document).on("change","input",function(){
     $("#totalArea").html(convertTo2DP(totalArea)+" sq. m")
 
     var totalCost = 0;
-    totalCost =   convertTo2DP(price_per_sqm * totalArea)
+    totalCost =   convertTo2DP(pricePerSqMetre * totalArea)
     $("#totalCost").html("$ "+totalCost)
 
     var totalTiles = 0;
-    totalTiles =   convertTo2DP(totalArea / tile_size_sqm)
+    totalTiles =   convertTo2DP(totalArea / tileSizeInSqMetre)
     $("#totalTiles").html(totalTiles+" pcs")
 });
 
@@ -146,7 +146,7 @@ function addTabRow(tab) {
             });
 
             if ($(this).data("name") === 'label') {
-                td.html(surface_type + newid);
+                td.html(surfaceType + newid);
             }
             
             var _td_child = $(current_td).find($(children[0]).prop('tagName')).clone().val("");
