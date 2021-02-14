@@ -54,13 +54,11 @@ $(document).on("change","input",function(){
     var lengthFeet = $parent.find('input[name*="feetleng"]').val()
 
     if (widthFeet) {
-        var _width_metres = widthFeet*feet_to_metres
-        width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+       width = convertTo2DP(widthFeet*feet_to_metres)
     }
 
     if (lengthFeet) {
-        var _length_metres = lengthFeet*feet_to_metres
-        length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+        length = convertTo2DP(lengthFeet*feet_to_metres)
     }
 
     // width and length in feet and inches
@@ -68,14 +66,11 @@ $(document).on("change","input",function(){
     var lengthInches = $parent.find('input[name*="inchlength"]').val()
 
     if (widthInches) { 
-        var _width_metres = widthInches*inch_to_feet*feet_to_metres
-        width = parseFloat(width) + (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+        width = parseFloat(width) + convertTo2DP(widthInches*inch_to_feet*feet_to_metres)
     }
 
     if (lengthInches) {
-        var _length_metres = lengthInches*inch_to_feet*feet_to_metres
-        length = parseFloat(length) +  (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
-        console.log("length "+length)
+        length = parseFloat(length) + convertTo2DP(lengthInches*inch_to_feet*feet_to_metres)
     }
 
     //width and length in inch only
@@ -83,16 +78,14 @@ $(document).on("change","input",function(){
     var _inchLength = $parent.find('input[name*="leninch"]').val()
 
     if (_inchWidth) {
-        var _width_metres = _inchWidth*inch_to_feet*feet_to_metres
-        width = (Math.round((_width_metres + Number.EPSILON) * 100) / 100)
+        width = convertTo2DP(_inchWidth*inch_to_feet*feet_to_metres)
     }
 
     if (_inchLength) {
-        var _length_metres = _inchLength*inch_to_feet*feet_to_metres
-        length = (Math.round((_length_metres + Number.EPSILON) * 100) / 100)
+        length = convertTo2DP(_inchLength*inch_to_feet*feet_to_metres)
     }
 
-    var _Area =  Math.round(((length * width) + Number.EPSILON) * 100) / 100
+    var _Area =  convertTo2DP(length * width)
 
     $parent.find('input[name*="area"]').val(_Area); 
 
@@ -107,13 +100,20 @@ $(document).on("change","input",function(){
     $("#totalArea").html(totalArea+" sq. m")
 
     var totalCost = 0;
-    totalCost =  Number(Math.round(((price_per_sqm * totalArea) + Number.EPSILON) * 100) / 100 )
+    totalCost =   convertTo2DP(price_per_sqm * totalArea)
     $("#totalCost").html("$ "+totalCost)
 
     var totalTiles = 0;
-    totalTiles =  Number(Math.round(((totalArea / tile_size_sqm) + Number.EPSILON) * 100) / 10 )
+    totalTiles =   convertTo2DP(totalArea / tile_size_sqm)
     $("#totalTiles").html(totalTiles+" pcs")
 });
+
+/* 
+Convert to value to 2 decimal places
+*/
+function convertTo2DP($value) {
+    return  Number(Math.round(($value + Number.EPSILON) * 100) / 100 )
+}
 
 function addTabRow(tab) {
     // Get max row id and set new id
