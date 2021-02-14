@@ -94,10 +94,10 @@ $(document).on("change","input",function(){
     var $tbody = $(this).closest("tbody")
 
     $tbody.find('input[name*="area"]').each(function() {
-        totalArea += Number($(this).val());
+        totalArea +=  Number($(this).val());
     });
 
-    $("#totalArea").html(totalArea+" sq. m")
+    $("#totalArea").html(convertTo2DP(totalArea)+" sq. m")
 
     var totalCost = 0;
     totalCost =   convertTo2DP(price_per_sqm * totalArea)
